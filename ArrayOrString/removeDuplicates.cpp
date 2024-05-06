@@ -43,6 +43,8 @@ public:
     return removeDulicatesTMP(nums, 2);
   }
 
+  // 仅针对有序序列有效的模板
+  // 原地删除重复出现的元素，使得出现次数超过两次的元素只出现k次
   int removeDulicatesTMP(vector<int>& nums, int k)
   {
     int len = 0;
