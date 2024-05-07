@@ -2,6 +2,7 @@
 
 class Solution {
  public:
+  // 每次降价前就把股票卖出去
   int maxProfit(std::vector<int>& prices) {
     int n = prices.size();
     int cost = INT_MAX, profit = 0;
@@ -18,6 +19,7 @@ class Solution {
         cost = prices[i];
       }
     }
+    // 记得把剩余的利润加上去，因为有可能最后一直没有降下去
     result += profit;
     return result;
   }
