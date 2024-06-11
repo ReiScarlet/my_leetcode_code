@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 #include <random>
 #include <vector>
 
@@ -35,5 +35,5 @@ class RandomizedSet {
 
  private:
   std::vector<int> nums;
-  std::map<int, int> records;  // 存储val插入的位置
+  std::unordered_map<int, int> records;  // 存储val插入的位置
 };
