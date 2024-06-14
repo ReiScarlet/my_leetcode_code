@@ -6,9 +6,6 @@ class Solution {
   int minSubArrayLen(int target, vector<int>& nums) {
     int minLen = INT32_MAX;
     const int n = nums.size();
-    if (n == 1) {
-      return nums[0] == target ? 1 : 0;
-    }
     int left = 0, tmpSum = 0;
     for (int right = 0; right < n; right++) {
       tmpSum += nums[right];
