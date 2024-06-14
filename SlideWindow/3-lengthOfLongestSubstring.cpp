@@ -2,22 +2,25 @@
 using namespace std;
 
 class Solution {
- public:
-  int lengthOfLongestSubstring(string s) {
-    if (s.size() == 0) {
-      return 0;
-    }
+public:
+    int lengthOfLongestSubstring(string s) {
+        // s[start,end) 前面包含 后面不包含
+        int start(0), end(0), length(0), result(0);
+        int sSize = int(s.size());
+        unordered_map<char, int> hash;
+        while (end < sSize) {
+            char tmpChar = s[end];
+            // 仅当s[start,end) 中存在s[end]时更新start
+            if (hash.find(tmpChar) != hash.end() && hash[tmpChar] >= start) {
+                start = hash[tmpChar] + 1;
+                length = end - start;
+            }
+            hash[tmpChar] = end;
 
-    unordered_set<char> lookup;
-    int left = 0, max_length = 0;
-    for (int i = 0; i < s.size(); i++) {
-      while (lookup.find(s[i]) != lookup.end()) {
-        lookup.erase(s[left]);
-        left++;
-      }
-      max_length = max(max_length, i - left + 1);
-      lookup.insert(s[i]);
+            end++;
+            length++;
+            result = std::max(result, length);
+        }
+        return result;
     }
-    return max_length;
-  }
 };
