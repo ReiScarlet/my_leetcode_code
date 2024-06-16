@@ -1,4 +1,4 @@
-#include <vector>
+#include <bits/stdc++.h>
 
 class Solution {
  public:
@@ -14,7 +14,7 @@ class Solution {
       int L = intervals[i][0], R = intervals[i][1];
       if (!merged.size() || merged.back()[1] < L) {  // new array
         merged.push_back({L, R});
-      } else { // interval
+      } else {  // interval
         merged.back()[1] = std::max(merged.back()[1], R);
       }
     }
