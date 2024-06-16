@@ -16,29 +16,20 @@ class Solution {
     int carry = 0;
     ListNode* ans = new ListNode();
     ListNode* cur = ans;
-    while (l1 != nullptr && l2 != nullptr) {
-      int sum = l1->val + l2->val + carry;
+    while (l1 || l2) {
+      int n1 = l1 ? l1->val : 0;
+      int n2 = l2 ? l2->val : 0;
+      int sum = n1 + n2 + carry;
       carry = sum / 10;
-      int num = sum % 10;
-      cur->next = new ListNode(num);
+      cur->next = new ListNode(sum % 10);
       cur = cur->next;
 
-      l1 = l1->next;
-      l2 = l2->next;
-    }
-    while (l1 != nullptr) {
-      int sum = l1->val + carry;
-      carry = sum / 10;
-      cur->next = new ListNode(sum % 10);
-      cur = cur->next;
-      l1 = l1->next;
-    }
-    while (l2 != nullptr) {
-      int sum = l2->val + carry;
-      carry = sum / 10;
-      cur->next = new ListNode(sum % 10);
-      cur = cur->next;
-      l2 = l2->next;
+      if (l1) {
+        l1 = l1->next;
+      }
+      if (l2) {
+        l2 = l2->next;
+      }
     }
     if (carry > 0) {
       cur->next = new ListNode(carry);
