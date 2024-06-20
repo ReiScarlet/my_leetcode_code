@@ -100,7 +100,7 @@ class LRUCache {
 };
 
 int main() {
-  auto cache = std::make_shared<LRUCache>(2);
+  auto cache = std::make_unique<LRUCache>(2);
   cache->put(1, 1);
   cache->put(2, 2);
   std::cout << cache->get(1) << std::endl;
